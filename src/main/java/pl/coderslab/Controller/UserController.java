@@ -13,6 +13,7 @@ import pl.coderslab.User;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -28,9 +29,6 @@ public class UserController {
 
 
 
-    //@Autowired
-    //UserRepository userRepository;
-
     @GetMapping("/user/add")
     public String addUser(Model model) {
         User user = new User();
@@ -43,33 +41,47 @@ public class UserController {
 
         User user1 = userRepo.findFirstByLogin(user.getLogin());
 
-        if (user1.equals(null)) {
-            return false;
-        } else {
+
+        if (user1==null) {
+            //System.out.println(user1.getLogin());
+
             return true;
+        } else {
+
+            //System.out.println(user1.getLogin());
+            return false;
         }
 
     }
 
     @PostMapping("/user/add")
-    public String addUserValidation(@ModelAttribute @Valid User user, BindingResult bindingResult){
+    public String addUserValidation(@ModelAttribute @Valid User user, BindingResult bindingResult) {
 
 
-        if(bindingResult.hasErrors()){
-
-            if (loginUnique(user)){
-
-                userDao.save(user);
-                return "ok";
-            } else {
-                return "addUser";
-            }
-        } else {
+        if (bindingResult.hasErrors()) {
+            return "addUser";
+        } else if (loginUnique(user)) {
 
             userDao.save(user);
-
             return "ok";
+        } else {
+
+            return "addUser";
         }
     }
+
+    @GetMapping("/user/allUsers")
+    public String showAllUsers(Model model){
+
+        List<User> userList = userRepo.findAll();
+
+        model.addAttribute("userList", userList);
+
+        return "allUsers";
+
+    }
+
+
+
 
 }

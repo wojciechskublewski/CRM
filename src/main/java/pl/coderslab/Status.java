@@ -1,6 +1,8 @@
 package pl.coderslab;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "status")
@@ -14,7 +16,18 @@ public class Status {
 
     private int sorting;
 
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "status")
+    private List<Task> tasks = new ArrayList<>();
+
     public Status() {
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public Long getId() {

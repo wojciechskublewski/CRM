@@ -2,6 +2,8 @@ package pl.coderslab;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "priority")
@@ -15,7 +17,18 @@ public class Priority {
 
     private Boolean activity;
 
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "priority")
+    private List<Task> tasks = new ArrayList<>();
+
     public Priority() {
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public Long getId() {

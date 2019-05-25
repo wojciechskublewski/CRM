@@ -23,14 +23,33 @@ public class Task {
 
     private String description;
 
-    /*@OneToMany
+    @ManyToOne
     private Status status;
 
-    @OneToMany
+    @ManyToOne
     private Priority priority;
-    */
 
-    //private User user;
+    @ManyToOne
+    private User user;
+
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+
 
 
     public Task() {

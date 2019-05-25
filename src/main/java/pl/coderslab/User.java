@@ -24,8 +24,19 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Project> projects = new ArrayList<>();
 
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Task> tasks = new ArrayList<>();
+
 
     public User() {
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public List<Project> getProjects() {

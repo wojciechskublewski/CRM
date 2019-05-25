@@ -91,7 +91,7 @@ public class WebConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/hibernate_testDB?useSSL=false");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/CRM?useSSL=false");
         dataSource.setUsername("root");
         dataSource.setPassword("coderslab");
         return dataSource;

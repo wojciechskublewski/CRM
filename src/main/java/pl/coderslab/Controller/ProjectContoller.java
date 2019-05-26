@@ -74,4 +74,28 @@ public class ProjectContoller {
         }
     }
 
+    @GetMapping("project/add/users")
+    public String addUsersProject(Model model){
+
+        List<Project> projectList = projectRepository.findAll();
+        List<User> users = userRepo.findAll();
+
+        model.addAttribute("projectList", projectList);
+        model.addAttribute("users",users);
+
+        return "addUserProject";
+    }
+
+    @PostMapping("/project/add/users")
+
+    public String addUserProjectValidation(@ModelAttribute @Valid Project project,BindingResult bindingResult) {
+
+
+        Project project1 = projectRepository.findOne(project.getId());
+
+        return "check";
+    }
+
+
+
 }

@@ -14,8 +14,8 @@
 </head>
 <body>
         <form method="post">
-            <form:select path="projectList" itemValue="id" itemLabel="name" items="${projectList}"/>
-            <form:select path="users" items="${users}" itemLabel="login" itemValue="id"/>
+            <form:select name="project.id" path="projectList" itemValue="id" itemLabel="name" items="${projectList}"/>
+            <form:select name="user.id"  path="users" items="${users}" itemLabel="login" itemValue="id"/>
             <input type="submit" value="Save">
         </form>
 </body>

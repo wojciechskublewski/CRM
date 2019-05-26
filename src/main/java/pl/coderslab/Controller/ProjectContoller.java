@@ -14,6 +14,7 @@ import pl.coderslab.Repository.ProjectRepository;
 import pl.coderslab.Repository.UserRepo;
 import pl.coderslab.User;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.Validator;
@@ -88,12 +89,14 @@ public class ProjectContoller {
 
     @PostMapping("/project/add/users")
 
-    public String addUserProjectValidation(@ModelAttribute @Valid Project project,BindingResult bindingResult) {
+    public String addUserProjectValidation(@ModelAttribute @Valid Project project, BindingResult bindingResult, HttpServletRequest request) {
 
+        String strID = request.getParameter("project.id");
 
-        Project project1 = projectRepository.findOne(project.getId());
+        //Project project1 = projectRepository.findOne(Long.parseLong(strID));
+        System.out.println(strID);
 
-        return "check";
+        return "ok";
     }
 
 

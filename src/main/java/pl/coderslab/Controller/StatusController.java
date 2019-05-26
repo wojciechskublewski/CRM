@@ -47,7 +47,7 @@ public class StatusController {
 
         if (bindingResult.hasErrors()) {
 
-            return "addProject";
+            return "forward:/addStatus";
         } else {
             statusRepository.save(status);
             return "ok";

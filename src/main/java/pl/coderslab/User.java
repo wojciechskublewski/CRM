@@ -31,17 +31,6 @@ public class User {
     public User() {
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
     public List<Task> getTasks() {
         return tasks;
     }

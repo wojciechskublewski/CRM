@@ -66,7 +66,7 @@ public class ProjectContoller {
 
 
         if (bindingResult.hasErrors()) {
-
+            System.out.println(bindingResult.toString());
             return "addProject";
         } else {
             projectRepository.save(project);

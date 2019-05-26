@@ -19,6 +19,8 @@
                     <td>${t.subject}</td>
                     <td>${t.date}</td>
                     <td>${t.project.name}</td>
+                    <td>${t.status.name}</td>
+                    
 
                 </tr>
             </c:forEach>

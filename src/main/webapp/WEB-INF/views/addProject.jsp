@@ -15,7 +15,7 @@
 <body>
 <form:form method="post" modelAttribute="project">
     <form:input path="name" />
-    <form:select itemValue="id" itemLabel="login" path="users" items="${users}"  />
+    <form:select multiple="true" itemValue="id" itemLabel="login" path="users" items="${users}"/>
     <input type="submit" value="Save">
 </form:form>
 

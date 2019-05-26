@@ -60,7 +60,7 @@ public class ProjectContoller {
     }
 
     @PostMapping("/project/add")
-    public String addUserValidation(@ModelAttribute @Valid Project project,BindingResult bindingResult) {
+    public String addProjectValidation(@ModelAttribute @Valid Project project,BindingResult bindingResult) {
 
 
 

@@ -12,6 +12,9 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
+
     private Boolean activity;
 
     private int sorting;
@@ -20,6 +23,14 @@ public class Status {
     private List<Task> tasks = new ArrayList<>();
 
     public Status() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Task> getTasks() {

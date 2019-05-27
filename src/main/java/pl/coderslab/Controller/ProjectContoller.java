@@ -92,9 +92,23 @@ public class ProjectContoller {
     public String addUserProjectValidation(@ModelAttribute @Valid Project project, BindingResult bindingResult, HttpServletRequest request) {
 
         String strID = request.getParameter("project.id");
+        String strIDU = request.getParameter("user.id");
 
-        //Project project1 = projectRepository.findOne(Long.parseLong(strID));
+        Project project1 = projectRepository.findOne(Long.parseLong(strID));
+
+        List<User> users = project1.getUsers();
+
+        users.add(userRepo.findOne(Long.parseLong(strIDU)));
+
+        project1.setUsers(users);
+
+        projectRepository.save(project1);
+
+        System.out.println(project1.getName());
         System.out.println(strID);
+        System.out.println(strIDU);
+
+
 
         return "ok";
     }

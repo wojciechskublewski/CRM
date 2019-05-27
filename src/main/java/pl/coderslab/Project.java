@@ -23,7 +23,7 @@ public class Project {
     @URL
     private String web;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users = new ArrayList<>();
 
     private Boolean active;

@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.Dao.ProjectDao;
 import pl.coderslab.Project;
 import pl.coderslab.Repository.ProjectRepository;
@@ -108,11 +106,36 @@ public class ProjectContoller {
         System.out.println(strID);
         System.out.println(strIDU);
 
-
-
         return "ok";
+    }
+
+    @GetMapping("/project/update/{id}")
+    public String updateProject(Model model, @PathVariable String id) {
+        Project project = new Project();
+        project = projectRepository.findOne(Long.parseLong(id));
+
+        model.addAttribute("project", project);
+
+        return "updateProject";
+    }
+
+    @PostMapping("project/update/{id}")
+    public String updateProjectVal(@ModelAttribute Project project, BindingResult bindingResult, @PathVariable String id) {
+
+        Project project1 = projectRepository.findOne(Long.parseLong(id));
+
+        project1.setName(project.getName());
+
+        projectDao.update(project1);
+
+        return  "ok";
     }
 
 
 
+
 }
+
+
+
+

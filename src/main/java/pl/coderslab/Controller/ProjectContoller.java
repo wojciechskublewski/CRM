@@ -3,6 +3,7 @@ package pl.coderslab.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import pl.coderslab.Dao.ProjectDao;
 import pl.coderslab.Project;
 import pl.coderslab.Repository.ProjectRepository;
 import pl.coderslab.Repository.UserRepo;
+import pl.coderslab.Service.UserService;
 import pl.coderslab.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,10 @@ import java.util.List;
 
 @Controller
 public class ProjectContoller {
+
+
+    private UserService userService;
+
 
     @Autowired
     ProjectRepository projectRepository;
@@ -60,9 +66,6 @@ public class ProjectContoller {
 
     @PostMapping("/project/add")
     public String addProjectValidation(@ModelAttribute @Valid Project project,BindingResult bindingResult) {
-
-
-
 
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.toString());
@@ -131,8 +134,42 @@ public class ProjectContoller {
         return  "ok";
     }
 
+    @GetMapping("project/delete/user")
+    public String updateDeleteUserFromProject(Model model){
+
+        List<Project> projects = projectRepository.findAll();
+
+        model.addAttribute("projects",projects);
+
+        return "deleteProjectUser";
+    }
+
+    @GetMapping("project/delete/user/{id}")
+    public String updateDeleteUserFromProjectGet(Model model, @PathVariable String id){
+
+        Project project = projectRepository.findOne(Long.parseLong(id));
+
+        List<User> users = project.getUsers();
+
+        model.addAttribute("project", project);
+        model.addAttribute("users", users);
+
+        System.out.println(users.toString());
+
+        return "projectRemoveUser";
+    }
+
+    @Transactional
+    @GetMapping("project/delete/user/{project}/{user}")
+    public String updateDeleteUserFromProjectVal(HttpServletRequest request, @PathVariable String project, @PathVariable String user) {
 
 
+
+
+        //userRepo.deleteUserFromProject(user);
+
+        return  "ok";
+    }
 
 }
 

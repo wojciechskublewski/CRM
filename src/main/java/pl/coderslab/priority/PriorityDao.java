@@ -1,9 +1,9 @@
-package pl.coderslab.Dao;
+package pl.coderslab.priority;
 
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.Priority;
+import pl.coderslab.priority.Priority;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

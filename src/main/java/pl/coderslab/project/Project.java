@@ -1,7 +1,9 @@
-package pl.coderslab;
+package pl.coderslab.project;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
+import pl.coderslab.task.Task;
+import pl.coderslab.user.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;

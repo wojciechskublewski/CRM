@@ -1,34 +1,33 @@
-package pl.coderslab.Dao;
-
+package pl.coderslab.task;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.coderslab.Project;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+
 @Repository
 @Transactional
-public class ProjectDao {
+public class TaskDao {
 
     @PersistenceContext
     EntityManager entityManager;
-    public void save(Project entity) {
+    public void save(Task entity) {
         entityManager.persist(entity);
     }
 
-    public Project findById(long id) {
-        return entityManager.find(Project.class, id);
+    public Task findById(long id) {
+        return entityManager.find(Task.class, id);
     }
 
 
-    public void update(Project entity) {
+    public void update(Task entity) {
         entityManager.merge(entity);
     }
 
-    public void delete(Project entity) {
+    public void delete(Task  entity) {
         entityManager.remove(entityManager.contains(entity) ?
                 entity : entityManager.merge(entity)); }
+
 }

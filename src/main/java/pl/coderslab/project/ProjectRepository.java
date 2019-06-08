@@ -1,11 +1,8 @@
-package pl.coderslab.Repository;
+package pl.coderslab.project;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import pl.coderslab.Project;
-import pl.coderslab.User;
+import pl.coderslab.user.User;
 
-import java.awt.print.Book;
 import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {

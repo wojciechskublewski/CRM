@@ -1,9 +1,9 @@
-package pl.coderslab.Repository;
+package pl.coderslab.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import pl.coderslab.User;
+import pl.coderslab.user.User;
 
 public interface UserRepo extends JpaRepository<User, Long> {
 

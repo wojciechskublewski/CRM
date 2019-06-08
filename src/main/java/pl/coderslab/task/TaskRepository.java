@@ -1,7 +1,6 @@
-package pl.coderslab.Repository;
+package pl.coderslab.task;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.coderslab.Task;
 
 public interface TaskRepository extends JpaRepository<Task,Long> {
 }

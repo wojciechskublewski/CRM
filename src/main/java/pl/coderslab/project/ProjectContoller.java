@@ -1,4 +1,4 @@
-package pl.coderslab.Controller;
+package pl.coderslab.project;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,23 +7,17 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.Dao.ProjectDao;
-import pl.coderslab.Project;
-import pl.coderslab.Repository.ProjectRepository;
-import pl.coderslab.Repository.UserRepo;
-import pl.coderslab.Service.UserService;
-import pl.coderslab.User;
+import pl.coderslab.user.UserRepo;
+import pl.coderslab.user.UserService;
+import pl.coderslab.user.User;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.Validator;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class ProjectContoller {
-
 
     private UserService userService;
 
@@ -163,7 +157,25 @@ public class ProjectContoller {
     @GetMapping("project/delete/user/{project}/{user}")
     public String updateDeleteUserFromProjectVal(HttpServletRequest request, @PathVariable String project, @PathVariable String user) {
 
+       UserService userService = new UserService();
 
+        Project project1 = projectRepository.findOne(Long.parseLong(project));
+
+        List<User> users = project1.getUsers();
+
+        System.out.println(users.toString());
+
+        System.out.println(user);
+
+        userService.deleteUserFr(users,Long.parseLong(user));
+
+
+
+        project1.setUsers(users);
+
+        System.out.println(users.toString());
+
+        projectRepository.save(project1);
 
 
         //userRepo.deleteUserFromProject(user);

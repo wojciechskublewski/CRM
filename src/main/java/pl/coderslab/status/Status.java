@@ -1,4 +1,6 @@
-package pl.coderslab;
+package pl.coderslab.status;
+
+import pl.coderslab.task.Task;
 
 import javax.persistence.*;
 import java.util.ArrayList;

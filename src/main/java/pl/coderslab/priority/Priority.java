@@ -1,5 +1,7 @@
-package pl.coderslab;
+package pl.coderslab.priority;
 
+
+import pl.coderslab.task.Task;
 
 import javax.persistence.*;
 import java.util.ArrayList;

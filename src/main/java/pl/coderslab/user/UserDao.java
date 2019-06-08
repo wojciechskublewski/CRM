@@ -1,8 +1,8 @@
-package pl.coderslab.Dao;
+package pl.coderslab.user;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.User;
+import pl.coderslab.user.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,9 +1,8 @@
-package pl.coderslab.Dao;
+package pl.coderslab.status;
 
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.Status;
 
 
 import javax.persistence.EntityManager;

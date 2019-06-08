@@ -1,4 +1,7 @@
-package pl.coderslab;
+package pl.coderslab.user;
+
+import pl.coderslab.project.Project;
+import pl.coderslab.task.Task;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -88,4 +91,11 @@ public class User {
     }
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                '}';
+    }
 }

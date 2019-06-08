@@ -1,10 +1,13 @@
-package pl.coderslab;
+package pl.coderslab.task;
 
+
+import pl.coderslab.priority.Priority;
+import pl.coderslab.project.Project;
+import pl.coderslab.status.Status;
+import pl.coderslab.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "task")

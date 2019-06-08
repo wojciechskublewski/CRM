@@ -1,10 +1,9 @@
-package pl.coderslab.Converter;
+package pl.coderslab.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import pl.coderslab.Project;
-import pl.coderslab.Repository.UserRepo;
-import pl.coderslab.User;
+import pl.coderslab.user.UserRepo;
+import pl.coderslab.user.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package pl.coderslab.Controller;
+package pl.coderslab.task;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,13 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.coderslab.Priority;
-import pl.coderslab.Repository.PriorityRepository;
-import pl.coderslab.Repository.ProjectRepository;
-import pl.coderslab.Repository.StatusRepository;
-import pl.coderslab.Repository.TaskRepository;
-import pl.coderslab.Status;
-import pl.coderslab.Task;
+import pl.coderslab.priority.Priority;
+import pl.coderslab.priority.PriorityRepository;
+import pl.coderslab.status.StatusRepository;
+import pl.coderslab.status.Status;
 
 import javax.validation.Valid;
 import javax.validation.Validator;

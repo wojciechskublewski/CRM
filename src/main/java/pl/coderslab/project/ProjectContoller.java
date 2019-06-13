@@ -83,7 +83,6 @@ public class ProjectContoller {
     }
 
     @PostMapping("/project/add/users")
-
     public String addUserProjectValidation(@ModelAttribute @Valid Project project, BindingResult bindingResult, HttpServletRequest request) {
 
         String strID = request.getParameter("project.id");

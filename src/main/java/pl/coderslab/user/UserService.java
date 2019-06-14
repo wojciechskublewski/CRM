@@ -44,6 +44,8 @@ public class UserService {
     return users;
     }
 
-
+    public User findByLogin(String login) {
+        return userRepo.findFirstByLogin(login);
+    }
 
 }

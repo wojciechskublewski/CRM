@@ -18,8 +18,18 @@
 
 </head>
 <body>
-    <h4>Witaj Wojtek!</h4>
+
     <%@include file="navbar.jspf" %>
 
+    <c:if test="${isLogged == null}">
+        <h1>Witaj zaloguj sie!</h1>
+        <br><br>
+    </c:if>
+
+
+    <c:if test="${isLogged == true}">
+        <h1>Witaj ${userSesion.login}</h1>
+        <br><br>
+    </c:if>
 </body>
 </html>

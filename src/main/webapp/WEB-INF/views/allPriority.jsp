@@ -10,16 +10,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
+    <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
+    <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+
+
     <title>All Priority</title>
 </head>
 <body>
-        <table>
+        <table class="table table-striped">
+
+            <thead>
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Value</th>
+                <th scope="col">Update</th>
+            </tr>
+            </thead>
+
             <c:forEach items="${priorities}" var="p">
-                <tr>
+                <tr scope="row">
                     <td>${p.name}</td>
                     <td>${p.activity}</td>
+                    <td><a href="/task/update/${p.id}">Update</a> / <a href="/task/delete/${p.id}">Delete</a> </td>
                 </tr>
-
             </c:forEach>
 
         </table>

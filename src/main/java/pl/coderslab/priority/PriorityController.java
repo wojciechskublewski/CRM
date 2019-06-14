@@ -52,7 +52,11 @@ public class PriorityController {
 
         if(priorities==null||priorities.isEmpty()){
             PriorityService priorityService = new PriorityService();
-            priorityService.priorityListAdd();
+           priorities=  priorityService.priorityListAdd();
+
+           for(int i =0; i<priorities.size(); i++){
+                priorityRepository.save(priorities.get(i));
+           }
         }
 
         model.addAttribute("priorities", priorities);

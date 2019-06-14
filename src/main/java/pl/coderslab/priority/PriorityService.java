@@ -2,14 +2,14 @@ package pl.coderslab.priority;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PriorityService {
 
-    @Autowired
-    PriorityRepository priorityRepository;
+    public List<Priority> priorityListAdd() {
 
-    public void priorityListAdd() {
+        List<Priority> priorityList = new ArrayList<>();
 
         Priority priority = new Priority("low", Boolean.TRUE);
         Priority priority1 = new Priority("medium-low", Boolean.TRUE);
@@ -18,12 +18,13 @@ public class PriorityService {
         Priority priority4 = new Priority("high", Boolean.TRUE);
         Priority priority5 = new Priority("highiest-priority", Boolean.FALSE);
 
-        priorityRepository.save(priority);
-        priorityRepository.save(priority1);
-        priorityRepository.save(priority2);
-        priorityRepository.save(priority3);
-        priorityRepository.save(priority4);
-        priorityRepository.save(priority5);
+        priorityList.add(priority);
+        priorityList.add(priority1);
+        priorityList.add(priority2);
+        priorityList.add(priority3);
+        priorityList.add(priority4);
+        priorityList.add(priority5);
 
+        return priorityList;
     }
 }

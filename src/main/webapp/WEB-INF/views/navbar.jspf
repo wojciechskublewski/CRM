@@ -11,13 +11,30 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin taks
+                    Add
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/user/add">Add user</a>
                     <a class="dropdown-item" href="/project/add">Add project</a>
                     <a class="dropdown-item" href="/task/add">Add task</a>
-                    <a class="dropdown-item" href="/status/add">Add statu</a>
+                    <a class="dropdown-item" href="/status/add">Add status</a>
+                    <a class="dropdown-item" href="/priority/add">Add priority</a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Show
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/user/all">Show all users</a>
+                    <a class="dropdown-item" href="/project/all">Show all projects</a>
+                    <a class="dropdown-item" href="/task/all">Show all tasks</a>
+                    <a class="dropdown-item" href="/status/all">Show all status</a>
+                    <a class="dropdown-item" href="/priority/all">Show all priority</a>
 
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>

@@ -25,6 +25,11 @@ public class Priority {
     public Priority() {
     }
 
+    public Priority(String name, Boolean activity) {
+        this.name = name;
+        this.activity = activity;
+    }
+
     public List<Task> getTasks() {
         return tasks;
     }

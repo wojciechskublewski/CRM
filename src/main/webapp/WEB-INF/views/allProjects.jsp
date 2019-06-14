@@ -13,6 +13,8 @@
     <title>All projects</title>
 </head>
 <body>
+
+
     <c:forEach items="${projects}" var="projects">
         ${projects.name} ${projects.description} ${projects.web} <a href="/project/update/${projects.id}" name="${projects.id}" > Update </a><br/>
     </c:forEach>

@@ -50,9 +50,17 @@ public class PriorityController {
 
         List<Priority> priorities = priorityRepository.findAll();
 
+        if(priorities==null||priorities.isEmpty()){
+            PriorityService priorityService = new PriorityService();
+            priorityService.priorityListAdd();
+        }
+
         model.addAttribute("priorities", priorities);
 
         return "allPriority";
     }
+
+
+
 
 }

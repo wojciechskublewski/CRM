@@ -81,6 +81,21 @@ public class UserController {
 
     }
 
+    @GetMapping("/login")
+    public String login(Model model){
+        List<User> userList = userRepo.findAll();
+        if(userList==null){
+
+            User user = new User();
+            user.setAdminTrueFalse(Boolean.TRUE);
+            user.setLogin("ADMIN");
+
+            userRepo.save(user);
+        }
+
+        return "login";
+    }
+
 
 
 

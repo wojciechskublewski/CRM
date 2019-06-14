@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: wskublewski
-  Date: 26.05.19
-  Time: 09:56
+  Date: 14.06.19
+  Time: 16:42
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,20 +16,26 @@
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 
 
-    <title>Add priority</title>
+    <title>Title</title>
 </head>
 <body>
-
 <%@include file="navbar.jspf" %>
 
 
 <div class="form-check">
 
     <form:form modelAttribute="priority" method="post">
-        Name: <form:input path="name"/> <br>
-        Active: <form:radiobutton path="activity" value="true"/>
-        Not Active: <form:radiobutton path="activity" value="false"/><br>
-        
+        Name: <form:input path="name" value="${priority.name}"/> <br>
+
+        <c:if test="${priority.activity==Boolean.TRUE}">
+            Active: <form:radiobutton path="activity" value="TRUE" checked="true"/>
+            Not Active: <form:radiobutton path="activity" value="FALSE"/><br>
+        </c:if>
+
+        <c:if test="${priority.activity==Boolean.FALSE}">
+            Active: <form:radiobutton path="activity" value="true" />
+            Not Active: <form:radiobutton path="activity" value="false" checked="true"/><br>
+        </c:if>
         <input type="submit" value="Save">
 
     </form:form>

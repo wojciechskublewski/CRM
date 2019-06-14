@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
@@ -26,6 +24,8 @@ public class PriorityController {
     public String addPriority(Model model) {
 
         Priority priority = new Priority();
+
+        addListPriority();
 
         model.addAttribute("priority", priority);
 
@@ -48,23 +48,54 @@ public class PriorityController {
     @GetMapping("/priority/all")
     public String showAllPriority(Model model) {
 
+        addListPriority();
         List<Priority> priorities = priorityRepository.findAll();
-
-        if(priorities==null||priorities.isEmpty()){
-            PriorityService priorityService = new PriorityService();
-           priorities=  priorityService.priorityListAdd();
-
-           for(int i =0; i<priorities.size(); i++){
-                priorityRepository.save(priorities.get(i));
-           }
-        }
-
         model.addAttribute("priorities", priorities);
 
         return "allPriority";
     }
 
+    public void addListPriority(){
+
+        List<Priority> priorities = priorityRepository.findAll();
+
+        if(priorities==null||priorities.isEmpty()){
+            PriorityService priorityService = new PriorityService();
+            priorities=  priorityService.priorityListAdd();
+
+            for(int i =0; i<priorities.size(); i++){
+                priorityRepository.save(priorities.get(i));
+            }
+        }
+
+    }
+
+    @GetMapping("/priority/delete/{id}")
+    public String deletePriority(@PathVariable Long id ){
+
+        Priority priority = priorityRepository.findOne(id);
+
+        priorityRepository.delete(priority);
+
+        return "ok";
+    }
+
+    @GetMapping("/priority/update/{id}")
+    public String updatePriorityGet(@PathVariable Long id, Model model){
+
+        Priority priority = priorityRepository.findOne(id);
+
+        model.addAttribute("priority", priority);
+        return "updatePriority";
+    }
+
+    @PostMapping("/priority/update/{id}")
+    public String updatePriorityPost(@ModelAttribute Priority priority, @PathVariable Long id){
+
+        priorityRepository.save(priority);
 
 
+        return "ok";
+    }
 
 }

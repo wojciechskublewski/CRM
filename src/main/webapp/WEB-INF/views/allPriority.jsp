@@ -33,7 +33,7 @@
                 <tr scope="row">
                     <td>${p.name}</td>
                     <td>${p.activity}</td>
-                    <td><a href="/task/update/${p.id}">Update</a> / <a href="/task/delete/${p.id}">Delete</a> </td>
+                    <td><a name="${p.id}" href="/priority/update/${p.id}">Update</a> / <a name="${p.id}" href="/priority/delete/${p.id}">Delete</a> </td>
                 </tr>
             </c:forEach>
 

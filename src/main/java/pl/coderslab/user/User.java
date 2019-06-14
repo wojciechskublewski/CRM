@@ -24,6 +24,10 @@ public class User {
 
     private String password;
 
+    private Boolean adminTrueFalse;
+
+
+
     @ManyToMany(mappedBy = "users")
     private List<Project> projects = new ArrayList<>();
 
@@ -32,6 +36,22 @@ public class User {
 
 
     public User() {
+    }
+
+    public User(String login, String firstName, String lastName, String password, Boolean adminTrueFalse) {
+        this.login = login;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.adminTrueFalse = adminTrueFalse;
+    }
+
+    public Boolean getAdminTrueFalse() {
+        return adminTrueFalse;
+    }
+
+    public void setAdminTrueFalse(Boolean adminTrueFalse) {
+        this.adminTrueFalse = adminTrueFalse;
     }
 
     public List<Task> getTasks() {

@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.project.ProjectDao;
 import pl.coderslab.project.ProjectRepository;
 
+import javax.jws.soap.SOAPBinding;
 import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +32,6 @@ public class UserService {
 
         userList = users;
 
-
-
-
         for (int i = 0; i<userList.size(); i++){
 
             if(userList.get(i).getId()== id){
@@ -45,5 +43,7 @@ public class UserService {
         }
     return users;
     }
+
+
 
 }

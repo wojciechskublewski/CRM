@@ -26,7 +26,7 @@
     <title>All Priority</title>
 </head>
 <body>
-
+<%@include file="navbar.jspf" %>
         <table class="table table-striped">
 
             <thead>

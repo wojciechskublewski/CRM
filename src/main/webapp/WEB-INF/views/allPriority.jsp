@@ -14,11 +14,19 @@
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+    <script>
+        function confirmDeletePriority(id, name) {
+            if (confirm("Do you want to delete a priority '" + name + "'?")) {
+                window.location.href = "/priority/delete/" + id;
+            }
+        }
+    </script>
 
 
     <title>All Priority</title>
 </head>
 <body>
+
         <table class="table table-striped">
 
             <thead>
@@ -33,7 +41,7 @@
                 <tr scope="row">
                     <td>${p.name}</td>
                     <td>${p.activity}</td>
-                    <td><a name="${p.id}" href="/priority/update/${p.id}">Update</a> / <a name="${p.id}" href="/priority/delete/${p.id}">Delete</a> </td>
+                    <td><a name="${p.id}" href="/priority/update/${p.id}">Update</a> / <a name="${p.id}" href="#" onclick="confirmDeletePriority(${p.id}, '${p.name}')" class="btn btn-danger" >Delete</a> </td>
                 </tr>
             </c:forEach>
 

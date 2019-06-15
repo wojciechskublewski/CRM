@@ -18,6 +18,8 @@
 
 </head>
 <body>
+<%@include file="navbar.jspf" %>
+
     <form method="post">
         <input type="text" name="login" value="please insert login">
         <input type="text" name="firstName" value="please insert first name">

@@ -27,6 +27,12 @@ public class Status {
     public Status() {
     }
 
+    public Status(String name, Boolean activity, int sorting) {
+        this.name = name;
+        this.activity = activity;
+        this.sorting = sorting;
+    }
+
     public String getName() {
         return name;
     }

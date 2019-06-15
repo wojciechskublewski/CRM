@@ -41,7 +41,7 @@
                 <tr scope="row">
                     <td>${p.name}</td>
                     <td>${p.activity}</td>
-                    <td><a name="${p.id}" href="/priority/update/${p.id}">Update</a> / <a name="${p.id}" href="#" onclick="confirmDeletePriority(${p.id}, '${p.name}')" class="btn btn-danger" >Delete</a> </td>
+                    <td><a class="table-primary" name="${p.id}" href="/priority/update/${p.id}">Update</a> / <a name="${p.id}" href="#" onclick="confirmDeletePriority(${p.id}, '${p.name}')" class="btn btn-danger" >Delete</a> </td>
                 </tr>
             </c:forEach>
 

@@ -29,6 +29,12 @@ public class StatusController {
     @GetMapping("/status/add")
     public String addStatus(Model model) {
 
+        StatusService statusService = new StatusService();
+
+        statusService.createStatusList();
+
+        createFirstStatutes();
+
         Status status = new Status();
 
         model.addAttribute("status", status);
@@ -54,6 +60,12 @@ public class StatusController {
     @GetMapping("/status/all")
     public String showAllStatu(Model model){
 
+        StatusService statusService = new StatusService();
+
+        statusService.createStatusList();
+
+        createFirstStatutes();
+
         List<Status> statuses = statusRepository.findAll();
 
         model.addAttribute("statutes", statuses);
@@ -61,6 +73,21 @@ public class StatusController {
         return "allStatus";
     }
 
+
+    public void createFirstStatutes(){
+
+        StatusService statusService = new StatusService();
+        List<Status> statusList = statusRepository.findAll();
+
+
+        if(statusList==null||statusList.isEmpty()){
+             statusList = statusService.createStatusList();
+
+            for (int i =0; i<statusList.size(); i++) {
+              statusRepository.save(statusList.get(i));
+            }
+        }
+    }
 
 
 

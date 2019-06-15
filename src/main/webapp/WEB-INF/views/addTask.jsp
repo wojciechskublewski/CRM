@@ -20,11 +20,18 @@
 <body>
 <%@include file="navbar.jspf" %>
 
-    <form:form modelAttribute="task" method="post">
-        <form:input path="subject"/>
-        <form:select path="status.id" items="${statuses}" itemLabel="name" itemValue="id"/>
-        <form:select path="priority.id" items="${priorities}" itemLabel="name" itemValue="id"/>
-        <input type="submit" value="Save">
-    </form:form>
+<header>Add task</header>
+
+<form:form modelAttribute="task" method="post">
+    Subject: <form:input path="subject"/><br>
+    Date: <form:input path="date" placeholder="mm/dd/yyyy"/>
+    Description: <form:input path="description"/>
+    <form:select path="status.id" items="${statuses}" itemLabel="name" itemValue="id"/>
+    <form:select path="priority.id" items="${priorities}" itemLabel="name" itemValue="id"/>
+    <input type="submit" value="Save">
+</form:form>
+
+
+
 </body>
 </html>

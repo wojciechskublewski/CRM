@@ -31,17 +31,12 @@ public class TaskController {
     @Autowired
     PriorityRepository priorityRepository;
 
+
     @GetMapping("/task/add")
     public String addTask(Model model) {
 
-        Task task = new Task();
+        model.addAttribute("task", new Task());
 
-        List<Status> statuses = statusRepository.findAll();
-        List<Priority> priorities = priorityRepository.findAll();
-
-        model.addAttribute("task", task);
-        model.addAttribute("statuses", statuses);
-        model.addAttribute("priorities", priorities);
         return "addTask";
     }
 
@@ -49,7 +44,7 @@ public class TaskController {
     public String addTaskValidation(@ModelAttribute @Valid Task task, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-
+            System.out.println("cos nie dziala");
             return "addTask";
         } else {
             taskRepository.save(task);
@@ -65,6 +60,16 @@ public class TaskController {
         return "allTasks";
     }
 
+
+    @ModelAttribute("statuses")
+    public List<Status> getStatuses(){
+        return statusRepository.findAll();
+    }
+
+    @ModelAttribute("priorities")
+    public List<Priority> getPriorities(){
+        return priorityRepository.findAll();
+    }
 
 
 }

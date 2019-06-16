@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.coderslab.task.Task;
+import pl.coderslab.task.TaskRepository;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
@@ -25,7 +27,8 @@ public class StatusController {
     @Autowired
     StatusDao statusDao;
 
-
+    @Autowired
+    TaskRepository taskRepository;
 
     @GetMapping("/status/add")
     public String addStatus(Model model) {
@@ -87,8 +90,22 @@ public class StatusController {
 
     @GetMapping("/status/delete/{id}")
     public String deleteStatusGet(@PathVariable Long id, Model model){
-        Status status = statusRepository.findOne(id);
-        statusRepository.delete(status);
+
+        List<Task> taskList = taskRepository.findAll();
+
+        if (taskList==null || taskList.isEmpty()) {
+            statusRepository.delete(id);
+        } else  {
+            for (int i =0; i<taskList.size(); i++) {
+                if(taskList.get(i).getStatus().getId()==id) {
+                    taskList.get(i).setStatus(null);
+                    taskRepository.save(taskList.get(i));
+                }
+
+            }
+            statusRepository.delete(id);
+        }
+
         return "ok";
     }
 

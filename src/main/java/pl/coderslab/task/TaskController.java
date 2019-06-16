@@ -83,6 +83,15 @@ public class TaskController {
         }
     }
 
+    @GetMapping("/task/delete/{id}")
+    public String taskDeleteGet(@ModelAttribute Task task){
+
+        taskRepository.delete(task);
+
+        return "ok";
+    }
+
+
 
 
     @ModelAttribute("statuses")

@@ -1,15 +1,21 @@
 package pl.coderslab.priority;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.task.Task;
+import pl.coderslab.task.TaskRepository;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
-
+@Transactional
+@Service
 @Controller
 public class PriorityController {
 
@@ -19,6 +25,8 @@ public class PriorityController {
     @Autowired
     Validator validator;
 
+    @Autowired
+    TaskRepository taskRepository;
 
     @GetMapping("/priority/add")
     public String addPriority(Model model) {
@@ -73,9 +81,21 @@ public class PriorityController {
     @GetMapping("/priority/delete/{id}")
     public String deletePriority(@PathVariable Long id ){
 
-        Priority priority = priorityRepository.findOne(id);
+        List<Task> tasksList = taskRepository.findAll();
+        System.out.println("1");
+        if(tasksList==null|| tasksList.isEmpty()){
+            priorityRepository.delete(id);
+        } else{
 
-        priorityRepository.delete(priority);
+            for (int i=0; i<tasksList.size(); i++){
+                if(tasksList.get(i).getPriority().getId()==id) {
+                    tasksList.get(i).setPriority(null);
+                    taskRepository.save(tasksList.get(i));
+                }
+            }
+            priorityRepository.delete(id);
+
+        }
 
         return "ok";
     }

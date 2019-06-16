@@ -22,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import pl.coderslab.task.TaskConverter;
 import pl.coderslab.user.UserConverter;
 
 import javax.persistence.EntityManagerFactory;
@@ -38,13 +39,20 @@ import java.util.Properties;
 @EnableJpaRepositories
 public class WebConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addFormatters(FormatterRegistry registry){
-        registry.addConverter(getUserConverter());
-    }
 
     @Bean
-    public UserConverter getUserConverter(){
+    public TaskConverter getTaskConverter() {
+        return new TaskConverter();
+    }
+
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(getTaskConverter());
+        registry.addConverter(getUserConverter());
+    }
+    @Bean
+    public UserConverter getUserConverter() {
         return new UserConverter();
     }
 

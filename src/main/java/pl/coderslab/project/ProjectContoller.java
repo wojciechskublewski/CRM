@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.task.Task;
+import pl.coderslab.task.TaskRepository;
 import pl.coderslab.user.UserRepo;
 import pl.coderslab.user.UserService;
 import pl.coderslab.user.User;
@@ -34,6 +36,9 @@ public class ProjectContoller {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
+    TaskRepository taskRepository;
+
     @GetMapping("/project/allProjects")
     public String showAllProjects(Model model) {
 
@@ -47,13 +52,7 @@ public class ProjectContoller {
     @GetMapping("/project/add")
     public String addProject(Model model) {
 
-        List<User> users = userRepo.findAll();
-
-        Project project = new Project();
-
-        model.addAttribute("users", users);
-
-        model.addAttribute("project", project);
+        model.addAttribute("project", new Project());
 
         return "addProject";
     }
@@ -168,8 +167,6 @@ public class ProjectContoller {
 
         userService.deleteUserFr(users,Long.parseLong(user));
 
-
-
         project1.setUsers(users);
 
         System.out.println(users.toString());
@@ -180,6 +177,15 @@ public class ProjectContoller {
         //userRepo.deleteUserFromProject(user);
 
         return  "ok";
+    }
+    @ModelAttribute("users")
+    public List<User> getUsers() {
+        return userRepo.findAll();
+    }
+
+    @ModelAttribute("tasks")
+    public List<Task> getTasks(){
+        return taskRepository.findAll();
     }
 
 }

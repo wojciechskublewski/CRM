@@ -21,8 +21,10 @@
 <%@include file="navbar.jspf" %>
 
 <form:form method="post" modelAttribute="project">
-    <form:input path="name" />
-    <form:select multiple="true" itemValue="id" itemLabel="login" path="users" items="${users}"/>
+    Name: <form:input path="name" /><br>
+    User: <form:select multiple="true" itemValue="id" itemLabel="login" path="users" items="${users}"/> <br>
+    Task: <form:select path="tasks" itemValue="id" itemLabel="subject" items="${tasks}"/><br>
+
     <input type="submit" value="Save">
 </form:form>
 

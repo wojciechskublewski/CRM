@@ -21,8 +21,6 @@ public class Task {
 
     private String subject;
 
-    @ManyToOne
-    private Project project;
 
     private String description;
 
@@ -80,15 +78,6 @@ public class Task {
 
     public void setSubject(String subject) {
         this.subject = subject;
-    }
-
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     public String getDescription() {

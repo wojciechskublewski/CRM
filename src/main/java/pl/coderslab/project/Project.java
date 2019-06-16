@@ -30,7 +30,10 @@ public class Project {
 
     private Boolean active;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "project")
+    @ManyToMany
+    @JoinTable(name = "project_tasks",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "task_id"))
     private List<Task> tasks = new ArrayList<>();
 
     public Project() {

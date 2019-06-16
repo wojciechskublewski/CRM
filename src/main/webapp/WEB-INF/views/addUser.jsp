@@ -21,10 +21,10 @@
 <%@include file="navbar.jspf" %>
 
     <form method="post">
-        <input type="text" name="login" value="please insert login">
-        <input type="text" name="firstName" value="please insert first name">
-        <input type="text" name="lastName" value="please insert last name">
-        <input type="text" name="password" value="please insert password">
+        Login: <input type="text" name="login" placeholder="please insert login"><br>
+        First name: <input type="text" name="firstName" placeholder="please insert first name"><br>
+        Last name: <input type="text" name="lastName" placeholder="please insert last name"><br>
+        Password: <input type="text" name="password" type="password" placeholder="please insert password"><br/>
         <input type="submit">
     </form>
 </body>

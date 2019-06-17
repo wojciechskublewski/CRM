@@ -27,6 +27,7 @@ public class Priority {
         this.activity = activity;
     }
 
+
     public Long getId() {
         return id;
     }

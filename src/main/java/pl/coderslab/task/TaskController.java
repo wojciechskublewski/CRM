@@ -96,12 +96,12 @@ public class TaskController {
 
     @ModelAttribute("statuses")
     public List<Status> getStatuses(){
-        return statusRepository.findAll();
+        return statusRepository.findAllByActivityTrue();
     }
 
     @ModelAttribute("priorities")
     public List<Priority> getPriorities(){
-        return priorityRepository.findAll();
+        return priorityRepository.findByActivityTrue();
     }
 
 

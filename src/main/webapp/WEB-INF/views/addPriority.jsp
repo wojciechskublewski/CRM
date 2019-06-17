@@ -22,19 +22,38 @@
 
 <%@include file="navbar.jspf" %>
 
+<header class="bg-primary">
+    <h4 class="mx-auto text-center">Add Priority </h4>
+</header>
+
 <div class="container">
 
 <div class="form-check">
 
     <form:form modelAttribute="priority" method="post">
-        <div class="row">
-            <label for="nameID">Name</label>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label" for="nameID">Name</label>
+        <div class="col-sm-5">
+            <form:input class="form-control" path="name" id="nameID"/>
         </div>
-        <form:input path="name" id="nameID"/> <br>
-        Active: <form:radiobutton path="activity" value="true"/>
-        Not Active: <form:radiobutton path="activity" value="false"/><br>
-        
-        <input type="submit" value="Save">
+        </div>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-1 pt-0">Activity</legend>
+                <div class="col-sm-3">
+                <div class="form-check">
+                    <form:radiobutton path="activity" value="true" id="activityID1" class="form-check-input"/>
+                    <label for="activityID1" class="form-check-lebel">Active</label>
+                </div>
+                <div class="form-check">
+                    <form:radiobutton path="activity" value="false" id="activityID2" class="form-check-input"/>
+                    <label for="activityID1" class="form-check-lebel">Not Active</label>
+                </div>
+                </div>
+            </div>
+        </fieldset>
+        <input type="submit" value="Send" class="btn btn-primary">
 
     </form:form>
 </div>

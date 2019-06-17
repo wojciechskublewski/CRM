@@ -20,7 +20,8 @@
 <body>
 <%@include file="navbar.jspf" %>
 
-<header>Add task</header>
+
+<header class="bg-primary">Add task</header>
 
 <form:form modelAttribute="task" method="post">
     Subject: <form:input path="subject"/><br>

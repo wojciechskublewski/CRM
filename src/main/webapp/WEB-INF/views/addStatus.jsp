@@ -20,14 +20,49 @@
 <body>
 <%@include file="navbar.jspf" %>
 
-<div class="container">
-    <form:form modelAttribute="status" method="post">
+<header class="bg-primary">
+    <h4 class="mx-auto text-center">Add Status </h4>
+</header>
 
-        Name:<form:input path="name"/> <br>
-        Active: <form:radiobutton path="activity" value="true"/>
-        Not Active: <form:radiobutton path="activity" value="false"/> <br>
-        Sorting: <form:input path="sorting"/> <br>
-        <input type="submit" value="Save">
+<div class="container">
+
+    <form:form modelAttribute="status" method="post">
+    <div class="form-group row">
+        <label for="nameID" class="col-sm-1 col-form-label">Name</label>
+        <div class="col-sm-3">
+        <form:input path="name" id="nameID" class="form-control"/>
+        </div>
+    </div>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-1 pt-md-1">Activity</legend>
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <form:radiobutton path="activity" value="true" class="form-check-input" name="gridRadios" id="gridRadios1" />
+                        <label class="form-check-label" for="gridRadios1">
+                            Active
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <form:radiobutton path="activity" value="false" class="form-check-input" name="gridRadios" id="gridRadios2" />
+                        <label class="form-check-label" for="gridRadios2">
+                            Not Active
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+
+
+        <div class="form-group row">
+            <label for="sortingID" class="col-sm-1 col-form-label">Sorting</label>
+            <div class="col-sm-3">
+         <form:input path="sorting" type="number" id="sortingID" min="0" max="30" class="form-control"/>
+            </div>
+        </div>
+        <input type="submit" value="Send" class="btn btn-primary">
     </form:form>
 
 </div>

@@ -20,13 +20,16 @@
 <body>
 <%@include file="navbar.jspf" %>
 
-
+<div class="container">
     <form:form modelAttribute="status" method="post">
+
         Name:<form:input path="name"/> <br>
         Active: <form:radiobutton path="activity" value="true"/>
         Not Active: <form:radiobutton path="activity" value="false"/> <br>
         Sorting: <form:input path="sorting"/> <br>
         <input type="submit" value="Save">
     </form:form>
+
+</div>
 </body>
 </html>

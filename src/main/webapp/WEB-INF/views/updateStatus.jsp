@@ -21,18 +21,22 @@
 <body>
 
 <%@include file="navbar.jspf" %>
+<p></p>
 
+
+<div class="container">
+    <p class="bg-success col-4">Please update status details:</p> <br/>
 <form:form modelAttribute="status" method="post">
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Name</label>
+        <label class="col-1 col-form-label">Name</label>
         <div class="col-sm-10">
-            <form:input name="name" path="name" value="${status.name}"/>
+            <form:input name="name" path="name" class="form-control col-3" value="${status.name}"/>
         </div>
     </div>
 
     <fieldset class="form-group">
         <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+            <legend class="col-form-label col-1 pt-0">Status</legend>
             <div class="col-sm-5">
                 <div class="form-check">
                     <form:radiobutton class="form-check-input" path="activity" name="activity" id="gridRadios1" value="TRUE" checked="true"/>
@@ -51,9 +55,9 @@
     </fieldset>
 
     <div class="form-group row">
-        <label for="inputSorting" class="col-sm-2 col-form-label">Sorting</label>
+        <label for="inputSorting" class="col-1 col-form-label">Sorting</label>
         <div class="col-sm-10">
-            <form:input type="text" name="sorting" path="sorting" class="form-control" id="inputSorting" placeholder="${status.sorting}"/>
+            <form:input type="number" min="0" max="30" name="sorting" path="sorting" class="form-control col-2" id="inputSorting" placeholder="${status.sorting}"/>
         </div>
     </div>
 
@@ -63,6 +67,6 @@
         </div>
     </div>
 </form:form>
-
+</div>
 </body>
 </html>

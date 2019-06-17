@@ -22,17 +22,23 @@
 
 <%@include file="navbar.jspf" %>
 
+<div class="container">
 
 <div class="form-check">
 
     <form:form modelAttribute="priority" method="post">
-        Name: <form:input path="name"/> <br>
+        <div class="row">
+            <label for="nameID">Name</label>
+        </div>
+        <form:input path="name" id="nameID"/> <br>
         Active: <form:radiobutton path="activity" value="true"/>
         Not Active: <form:radiobutton path="activity" value="false"/><br>
         
         <input type="submit" value="Save">
 
     </form:form>
+</div>
+
 </div>
 </body>
 </html>

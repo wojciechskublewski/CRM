@@ -12,6 +12,8 @@ import pl.coderslab.priority.Priority;
 import pl.coderslab.priority.PriorityRepository;
 import pl.coderslab.status.StatusRepository;
 import pl.coderslab.status.Status;
+import pl.coderslab.user.User;
+import pl.coderslab.user.UserRepo;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
@@ -31,6 +33,9 @@ public class TaskController {
 
     @Autowired
     PriorityRepository priorityRepository;
+
+    @Autowired
+    UserRepo userRepo;
 
 
     @GetMapping("/task/add")
@@ -91,8 +96,8 @@ public class TaskController {
         return "ok";
     }
 
-
-
+    @ModelAttribute("users")
+    public List<User> getUsers(){ return userRepo.findAll();}
 
     @ModelAttribute("statuses")
     public List<Status> getStatuses(){

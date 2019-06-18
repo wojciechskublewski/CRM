@@ -39,6 +39,7 @@
                 <th scope="col">Subject</th>
                 <th scope="col">Date</th>
                 <th scope="col">Description</th>
+                <th scope="col">User</th>
                 <th scope="col">Priority</th>
                 <th scope="col">Status</th>
                 <th scope="col">Edit/Delete</th>
@@ -52,6 +53,7 @@
                     <td>${t.subject}</td>
                     <td>${t.date}</td>
                     <td>${t.description}</td>
+                    <td>${t.user.login}</td>
                     <td>${t.priority.name}</td>
                     <td>${t.status.name}</td>
                     <td><a href="/task/update/${t.id}" class="btn btn-primary">Edit</a> / <a href="/task/delete/${t.id}" class="btn btn-danger" onclick="confirmDeleteTask(${t.id}, '${t.subject}')" >Delete</a> </td>

@@ -72,7 +72,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/allUsers")
+    @GetMapping("/user/all")
     public String showAllUsers(Model model){
 
         List<User> userList = userRepo.findAll();

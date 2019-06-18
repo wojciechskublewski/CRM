@@ -20,12 +20,37 @@
 <body>
 <%@include file="navbar.jspf" %>
 
-    <form method="post">
-        Login: <input type="text" name="login" placeholder="please insert login"><br>
-        First name: <input type="text" name="firstName" placeholder="please insert first name"><br>
-        Last name: <input type="text" name="lastName" placeholder="please insert last name"><br>
-        Password: <input type="text" name="password" type="password" placeholder="please insert password"><br/>
-        <input type="submit">
-    </form>
+<header class="bg-primary">
+    <h1 class="mx-auto text-center">Add User</h1>
+</header>
+    <div class="container">
+    <form:form method="post" modelAttribute="user" >
+        <div class="form-group row">
+            <label for="loginID" class="col-sm-1 col-form-label">Login</label>
+            <div class="col-sm-4">
+                <form:input path="login" type="text" name="login" class="form-control" id="loginID" placeholder="please insert login"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="firstNameID" class="col-sm-1 col-form-label">First Name</label>
+            <div class="col-sm-4">
+                <form:input path="firstName" type="text" name="firstName" class="form-control" id="firstNameID" placeholder="please insert first name"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastNameID" class="col-sm-1 col-form-label">Last Name</label>
+            <div class="col-sm-4">
+                <form:input path="lastName" type="text" name="lastName" class="form-control" id="lastNameID" placeholder="please insert last name"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="passwordID" class="col-sm-1 col-form-label">Password</label>
+            <div class="col-sm-4">
+                <form:password path="password" name="password" class="form-control" id="passwordID" placeholder="please insert password"/>
+            </div>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form:form>
+    </div>
 </body>
 </html>

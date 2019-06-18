@@ -21,16 +21,58 @@
 <%@include file="navbar.jspf" %>
 
 
-<header class="bg-primary">Add task</header>
+<header class="bg-primary">
+    <h1 class="text-center">Add task</h1>
+</header>
 
-<form:form modelAttribute="task" method="post">
-    Subject: <form:input path="subject"/><br>
-    Date: <form:input path="date" placeholder="mm/dd/yyyy"/>
-    Description: <form:input path="description"/>
-    <form:select path="status.id" items="${statuses}" itemLabel="name" itemValue="id"/>
-    <form:select path="priority.id" items="${priorities}" itemLabel="name" itemValue="id"/>
-    <input type="submit" value="Save">
-</form:form>
+<div class="container">
+    <form:form modelAttribute="task" method="post">
+        <div class="form-group row">
+            <label for="nameID" class="col-sm-2 col-form-label">Subject</label>
+            <div class="col-sm-7">
+                <form:input path="subject" class="form-control" id="nameID" />
+        </div>
+    </div>
+        <div class="form-group row">
+            <label for="dateID" class="col-sm-2 col-form-label">Date</label>
+            <div class="col-sm-3">
+                <form:input path="date" placeholder="mm/dd/yyyy" class="form-control" id="dateID" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="desID" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-7">
+                <form:input path="description" class="form-control" id="desID" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="userID" class="col-sm-2 col-form-label">User</label>
+            <div class="col-sm-3">
+                <form:select items="${users}" path="user.id" id="userID" class="custom-select"  itemLabel="login" itemValue="id"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="statusID" class="col-sm-2 col-form-label">Status</label>
+            <div class="col-sm-3">
+                <form:select path="status.id" id="statusID" class="custom-select" items="${statuses}" itemLabel="name" itemValue="id"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="priorityID" class="col-sm-2 col-form-label">Priority</label>
+            <div class="col-sm-3">
+                <form:select class="custom-select" id="priorityID" path="priority.id" items="${priorities}" itemLabel="name" itemValue="id"/>
+            </div>
+        </div>
+
+    <input class="btn btn-primary" type="submit" value="Save">
+
+    </form:form>
+</div>
+
 
 
 

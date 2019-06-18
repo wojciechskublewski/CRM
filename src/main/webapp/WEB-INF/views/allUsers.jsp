@@ -14,14 +14,43 @@
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
-
+    <script>
+        function confirmDeleteUser(id, name) {
+            if (confirm("Do you want to delete user '" + name + "'?")) {
+                window.location.href = "/user/delete/" + id;
+            }
+        }
+    </script>
     <title>All Users</title>
 </head>
 <body>
 <%@include file="navbar.jspf" %>
 
-    <c:forEach items="${userList}" var="userList">
-        ${userList.login} ${userList.firstName} ${userList.lastName} <br>
-    </c:forEach>
+<header class="bg-success">
+    <h1 class="text-center">All USERS</h1>
+</header>
+
+    <div class="container">
+        <table class="table table-success">
+            <thead>
+            <tr>
+                <th scope="col">Login</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+            </tr>
+            </thead>
+
+
+
+            <c:forEach items="${userList}" var="userList">
+                <tr scope="row">
+                    <td>${userList.login}</td>
+                    <td>${userList.firstName}</td>
+                    <td>${userList.lastName}</td>
+                    <td><a class="btn btn-primary" name="${userList.id}" href="/user/update/${userList.id}">Update</a> / <a name="${userList.id}" href="#" onclick="confirmDeleteUser(${userList.id}, '${userList.login}')" class="btn btn-danger" >Delete</a> </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </body>
 </html>

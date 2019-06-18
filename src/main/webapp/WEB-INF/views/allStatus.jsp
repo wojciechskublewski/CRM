@@ -27,6 +27,7 @@
 </head>
 <body>
 <%@include file="navbar.jspf" %>
+
 <div class="container">
         <table class="table table-striped">
             <thead>

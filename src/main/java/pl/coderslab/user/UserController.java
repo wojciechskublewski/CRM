@@ -1,14 +1,14 @@
 package pl.coderslab.user;
 
+import antlr.collections.impl.LList;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.project.Project;
+import pl.coderslab.project.ProjectRepository;
 import pl.coderslab.user.UserDao;
 import pl.coderslab.user.UserRepo;
 import pl.coderslab.user.User;
@@ -29,6 +29,9 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
+    ProjectRepository projectRepository;
+
     private UserService userService;
 
     @GetMapping("/user/add")
@@ -43,13 +46,10 @@ public class UserController {
 
         User user1 = userRepo.findFirstByLogin(user.getLogin());
 
-
         if (user1==null) {
             //System.out.println(user1.getLogin());
-
             return true;
         } else {
-
             //System.out.println(user1.getLogin());
             return false;
         }
@@ -117,6 +117,65 @@ public class UserController {
             return "userList";
         }
         return "login";
+    }
+
+    @GetMapping("/user/delete/{id}")
+    public String userDeleteGet(@PathVariable Long id){
+
+        List<Project> projectList = projectRepository.findAll();
+        if(projectList==null || projectList.isEmpty()){
+            userRepo.delete(id);
+        } else {
+            for (int i = 0; i < projectList.size(); i++) {
+
+                List<User> userList = projectList.get(i).getUsers();
+
+                for (int j=0; j<userList.size(); j++){
+                        if(userList.get(j).getId()==id){
+                            userList.remove(j);
+                        }
+                    }
+                    projectList.get(i).setUsers(userList);
+                    projectRepository.save(projectList.get(i));
+                }
+                userRepo.delete(id);
+            }
+
+        return "ok";
+    }
+
+    @GetMapping("/user/update/{id}")
+    public String userUpdateGet(@PathVariable Long id, Model model){
+
+        model.addAttribute("user", userRepo.findOne(id));
+
+        return "updateUser";
+
+    }
+
+    @PostMapping("/user/update/{id}")
+    public String userUpdatePost(@ModelAttribute @Valid User user, BindingResult bindingResult, @PathVariable Long id){
+
+
+
+        if (bindingResult.hasErrors()) {
+            return "updateUser";
+        } else if (loginUnique(user)) {
+            userRepo.save(user);
+            return "ok";
+        } else {
+
+            List<User> userList = userRepo.findAllByLogin(user.getLogin());
+
+            if (userList.get(0).getId() == id) {
+                userRepo.save(user);
+                return "ok";
+            } else {
+                return "updateUser";
+            }
+
+        }
+
     }
 
 

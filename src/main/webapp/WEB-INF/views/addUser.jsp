@@ -26,26 +26,26 @@
     <div class="container">
     <form:form method="post" modelAttribute="user" >
         <div class="form-group row">
-            <label for="loginID" class="col-sm-1 col-form-label">Login</label>
-            <div class="col-sm-4">
+            <label for="loginID" class="col-sm-2 col-form-label">Login</label>
+            <div class="col-sm-6">
                 <form:input path="login" type="text" name="login" class="form-control" id="loginID" placeholder="please insert login"/>
             </div>
         </div>
         <div class="form-group row">
-            <label for="firstNameID" class="col-sm-1 col-form-label">First Name</label>
-            <div class="col-sm-4">
+            <label for="firstNameID" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-6">
                 <form:input path="firstName" type="text" name="firstName" class="form-control" id="firstNameID" placeholder="please insert first name"/>
             </div>
         </div>
         <div class="form-group row">
-            <label for="lastNameID" class="col-sm-1 col-form-label">Last Name</label>
-            <div class="col-sm-4">
+            <label for="lastNameID" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-6">
                 <form:input path="lastName" type="text" name="lastName" class="form-control" id="lastNameID" placeholder="please insert last name"/>
             </div>
         </div>
         <div class="form-group row">
-            <label for="passwordID" class="col-sm-1 col-form-label">Password</label>
-            <div class="col-sm-4">
+            <label for="passwordID" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-6">
                 <form:password path="password" name="password" class="form-control" id="passwordID" placeholder="please insert password"/>
             </div>
         </div>

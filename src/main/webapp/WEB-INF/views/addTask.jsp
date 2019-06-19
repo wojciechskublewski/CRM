@@ -22,7 +22,7 @@
 
 
 <header class="bg-primary">
-    <h1 class="text-center">Add task</h1>
+    <h1 class="text-center">Add TASK</h1>
 </header>
 
 <div class="container">

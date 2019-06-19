@@ -15,14 +15,62 @@
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 
+
+    <script>
+        function confirmDeleteProject(id, name) {
+            if (confirm("Do you want to delete a project '" + name + "'?")) {
+                window.location.href = "/project/delete/" + id;
+            }
+        }
+    </script>
+
     <title>All projects</title>
 </head>
 <body>
 <%@include file="navbar.jspf" %>
 
+<header class="bg-success">
+    <h1 class="text-center">All Projects</h1>
+</header>
+<div class="container">
+    <table class="table table-striped">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Project name</th>
+            <th scope="col">Project description</th>
+            <th scope="col">Http</th>
+            <th scope="col">Users</th>
+            <th scope="col">Tasks</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edit/Delete</th>
+        </tr>
+        </thead>
 
     <c:forEach items="${projects}" var="projects">
-        ${projects.name} ${projects.description} ${projects.web} <a href="/project/update/${projects.id}" name="${projects.id}" > Update </a><br/>
+        <tbody>
+        <tr>
+            <td>${projects.name}</td>
+            <td>${projects.description}</td>
+            <td>${projects.web}</td>
+            <td>
+                <c:forEach items="${projects.users}" var="u">
+                    ${u.login}<br/>
+                </c:forEach>
+            </td>
+            <td>
+                <c:forEach items="${projects.tasks}" var="t">
+                    ${t.subject}<br/>
+                </c:forEach>
+
+            </td>
+            <td>${projects.active}</td>
+            <td><a href="/project/update/${projects.id}" class="btn btn-primary">Edit</a> / <a href="/project/delete/${projects.id}" class="btn btn-danger" onclick="confirmDeleteProject(${projects.id}, '${projects.name}')" >Delete</a> </td>
+
+        </tr>
+        </tbody>
+
     </c:forEach>
+    </table>
+</div>
 </body>
 </html>

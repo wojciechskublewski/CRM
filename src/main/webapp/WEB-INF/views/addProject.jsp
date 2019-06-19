@@ -20,14 +20,68 @@
 <body>
 <%@include file="navbar.jspf" %>
 
-<form:form method="post" modelAttribute="project">
-    Name: <form:input path="name" /><br>
-    User: <form:select multiple="true" itemValue="id" itemLabel="login" path="users" items="${users}"/> <br>
-    Task: <form:select path="tasks" itemValue="id" itemLabel="subject" items="${tasks}"/><br>
+<header class="bg-primary">
+    <h1 class="text-center">Add PROJECT</h1>
+</header>
 
-    <input type="submit" value="Save">
-</form:form>
+<div class="container">
 
+    <form:form method="post" modelAttribute="project">
+        <div class="form-group row">
+            <label for="nameID" class="col-sm-2 col-form-label">Project Name</label>
+            <div class="col-sm-7">
+                <form:input path="name" class="form-control" id="nameID" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="desID" class="col-sm-2 col-form-label">Project Desctrition</label>
+                <div class="col-sm-7">
+                    <form:textarea path="description" class="form-control" id="desID" />
+                </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="webID" class="col-sm-2 col-form-label">Project WebSite</label>
+            <div class="col-sm-7">
+                <form:input path="web" class="form-control" id="webID" placeholder="http:\\...." />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="usersID" class="col-sm-2 col-form-label">USERS</label>
+            <div class="col-sm-7">
+                <form:select class="form-control" id="usersID" multiple="true" itemValue="id" itemLabel="login" path="users" items="${users}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="tasksID" class="col-sm-2 col-form-label">TASKS</label>
+            <div class="col-sm-7">
+                <form:select class="form-control" id="tasksID" path="tasks" itemValue="id" itemLabel="subject" items="${tasks}"/>
+            </div>
+        </div>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-1 pt-0">Project Status</legend>
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <form:radiobutton path="active" value="true" id="activityID1" class="form-check-input"/>
+                        <label for="activityID1" class="form-check-lebel">Active</label>
+                    </div>
+                    <div class="form-check">
+                        <form:radiobutton path="active" value="false" id="activityID2" class="form-check-input"/>
+                        <label for="activityID1" class="form-check-lebel">Not Active</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form:form>
+</div>
 
 </body>
 </html>

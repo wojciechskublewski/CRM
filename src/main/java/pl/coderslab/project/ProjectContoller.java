@@ -1,6 +1,7 @@
 package pl.coderslab.project;
 
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +40,7 @@ public class ProjectContoller {
     @Autowired
     TaskRepository taskRepository;
 
-    @GetMapping("/project/allProjects")
+    @GetMapping("/project/all")
     public String showAllProjects(Model model) {
 
         List<Project> projects = projectRepository.findAll();

@@ -29,8 +29,11 @@
 <body>
 <%@include file="navbar.jspf" %>
 
-<div class="container">
+<header class="bg-success">
+    <h1 class="text-center">All TASKS</h1>
+</header>
 
+<div class="container">
 
         <table class="table table-light">
 

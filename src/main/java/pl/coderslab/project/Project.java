@@ -1,5 +1,8 @@
 package pl.coderslab.project;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 import pl.coderslab.task.Task;
@@ -25,11 +28,13 @@ public class Project {
     @URL
     private String web;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
     private List<User> users = new ArrayList<>();
 
     private Boolean active;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(name = "project_tasks",
             joinColumns = @JoinColumn(name = "project_id"),
@@ -94,4 +99,6 @@ public class Project {
     public void setActive(Boolean active) {
         this.active = active;
     }
+
+
 }

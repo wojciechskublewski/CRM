@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.priority.Priority;
 import pl.coderslab.priority.PriorityRepository;
+import pl.coderslab.project.Project;
+import pl.coderslab.project.ProjectRepository;
 import pl.coderslab.status.StatusRepository;
 import pl.coderslab.status.Status;
 import pl.coderslab.user.User;
@@ -35,7 +37,11 @@ public class TaskController {
     PriorityRepository priorityRepository;
 
     @Autowired
+    ProjectRepository projectRepository;
+
+    @Autowired
     UserRepo userRepo;
+
 
 
     @GetMapping("/task/add")
@@ -77,6 +83,17 @@ public class TaskController {
         return "updateTask";
     }
 
+
+    @GetMapping("/task/{id}")
+    public String taskDetailsGet(@PathVariable Long id, Model model){
+
+        Task task = taskRepository.findOne(id);
+
+        model.addAttribute("task", task);
+
+        return "taskDetails";
+    }
+
     @PostMapping("/task/update/{id}")
     public String taskEditPost(@ModelAttribute @Valid Task task, BindingResult bindingResult) {
 
@@ -89,9 +106,24 @@ public class TaskController {
     }
 
     @GetMapping("/task/delete/{id}")
-    public String taskDeleteGet(@ModelAttribute Task task){
+    public String taskDeleteGet(@PathVariable Long id, @ModelAttribute Task task){
 
-        taskRepository.delete(task);
+
+        List<Project> projectList = projectRepository.findAll();
+
+
+        for (int i=0; i<projectList.size(); i++){
+                for(int j=0; j<projectList.get(i).getTasks().size(); j++){
+                    if(projectList.get(i).getTasks().get(j).getId()==id){
+                        projectList.get(i).getTasks().set(j, null);
+                    }
+                }
+            projectRepository.save(projectList.get(i));
+            }
+
+
+
+        taskRepository.delete(id);
 
         return "ok";
     }

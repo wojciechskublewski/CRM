@@ -31,7 +31,7 @@
 </header>
 
     <div class="container">
-        <table class="table table-success">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th scope="col">Login</th>

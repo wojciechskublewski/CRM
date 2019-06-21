@@ -32,7 +32,7 @@
 <header class="bg-success">
     <h1 class="text-center">All Projects</h1>
 </header>
-<div class="container">
+
     <table class="table table-striped">
         <thead class="thead-light">
         <tr>
@@ -59,18 +59,18 @@
             </td>
             <td>
                 <c:forEach items="${projects.tasks}" var="t">
-                    ${t.subject}<br/>
+                    <a href="/task/${t.id}" class="badge badge-primary">${t.subject}</a> <br/>
                 </c:forEach>
 
             </td>
             <td>${projects.active}</td>
-            <td><a href="/project/update/${projects.id}" class="btn btn-primary">Edit</a> / <a href="/project/delete/${projects.id}" class="btn btn-danger" onclick="confirmDeleteProject(${projects.id}, '${projects.name}')" >Delete</a> </td>
+            <td><a href="/project/update/${projects.id}" class="btn btn-primary">Edit</a> / <a href="#" class="btn btn-danger" onclick="confirmDeleteProject(${projects.id}, '${projects.name}')" >Delete</a> </td>
 
         </tr>
         </tbody>
 
     </c:forEach>
     </table>
-</div>
+
 </body>
 </html>

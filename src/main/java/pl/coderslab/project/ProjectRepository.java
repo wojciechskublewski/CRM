@@ -9,6 +9,6 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
 
     List<User> findAllById(Long id);
-
+    List<Project> findAllByTasks(Long id);
 
 }

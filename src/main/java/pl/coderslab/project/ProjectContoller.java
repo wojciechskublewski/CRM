@@ -17,6 +17,8 @@ import pl.coderslab.user.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -60,6 +62,8 @@ public class ProjectContoller {
 
     @PostMapping("/project/add")
     public String addProjectValidation(@ModelAttribute @Valid Project project,BindingResult bindingResult) {
+
+        project.setDate(Date.valueOf(LocalDate.now()));
 
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.toString());
@@ -106,9 +110,8 @@ public class ProjectContoller {
     }
 
     @GetMapping("/project/update/{id}")
-    public String updateProject(Model model, @PathVariable String id) {
-        Project project = new Project();
-        project = projectRepository.findOne(Long.parseLong(id));
+    public String updateProject(Model model, @PathVariable Long id) {
+        Project project = projectRepository.findOne(id);
 
         model.addAttribute("project", project);
 
@@ -116,14 +119,9 @@ public class ProjectContoller {
     }
 
     @PostMapping("project/update/{id}")
-    public String updateProjectVal(@ModelAttribute Project project, BindingResult bindingResult, @PathVariable String id) {
+    public String updateProjectVal(@ModelAttribute Project project, BindingResult bindingResult, @PathVariable long id) {
 
-        Project project1 = projectRepository.findOne(Long.parseLong(id));
-
-        project1.setName(project.getName());
-
-        projectDao.update(project1);
-
+       projectRepository.save(project);
         return  "ok";
     }
 
@@ -179,6 +177,17 @@ public class ProjectContoller {
 
         return  "ok";
     }
+
+    @GetMapping("/project/delete/{id}")
+    public String deleteProjectGet(@PathVariable Long id){
+
+        projectRepository.delete(id);
+
+
+        return "ok";
+    }
+
+
     @ModelAttribute("users")
     public List<User> getUsers() {
         return userRepo.findAll();

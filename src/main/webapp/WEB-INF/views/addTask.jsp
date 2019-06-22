@@ -43,7 +43,7 @@
         <div class="form-group row">
             <label for="desID" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-7">
-                <form:input path="description" class="form-control" id="desID" />
+                <form:textarea path="description" class="form-control" id="desID" />
             </div>
         </div>
 

@@ -21,7 +21,7 @@
 <%@include file="navbar.jspf" %>
 
 <header class="bg-primary">
-    <h1 class="mx-auto text-center">Edit User</h1>
+    <h1 class="mx-auto text-center">EDIT User</h1>
 </header>
 <div class="container">
     <form:form method="post" modelAttribute="user" >

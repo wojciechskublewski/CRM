@@ -5,10 +5,12 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.task.Task;
 import pl.coderslab.user.User;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,17 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Basic
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     @NotEmpty
     private String name;

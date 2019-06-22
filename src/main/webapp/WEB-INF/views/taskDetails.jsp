@@ -38,18 +38,17 @@
 
 
 
-
-
-    <div class="card border-primary mx-auto" style="max-width: 18rem;">
+    <div class="card border-primary mx-auto" style="max-width: 30rem;">
         <div class="card-header">Task</div>
         <div class="card-body text-primary">
             <h4 class="card-title">Task deatils</h4>
-            <p class="card-text">${task.subject}</p>
-            <p class="card-text">${task.description}</p>
-            <p class="card-text">${task.date}</p>
-            <p class="card-text">${task.user.login}</p>
-            <p class="card-text">${task.priority.name}</p>
-            <p class="card-text">${task.status.name}</p>
+            <p class="card-text">Subject: ${task.subject}</p>
+            <p class="card-text">Description: ${task.description}</p>
+            <p></p>
+            <p class="card-text">Date: ${task.date}</p>
+            <p class="card-text">User:${task.user.login}</p>
+            <p class="card-text">Priority: ${task.priority.name}</p>
+            <p class="card-text">Status: ${task.status.name}</p>
         </div>
 
         <a href="/task/update/${task.id}" class="mx-auto btn btn-success">Edit</a>  <a href="#" class="mx-auto btn btn-danger" onclick="confirmDeleteTask(${task.id}, '${task.subject}')">Delete</a>

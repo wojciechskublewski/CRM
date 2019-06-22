@@ -1,13 +1,11 @@
 package pl.coderslab.task;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.priority.Priority;
 import pl.coderslab.priority.PriorityRepository;
 import pl.coderslab.project.Project;
@@ -17,6 +15,7 @@ import pl.coderslab.status.Status;
 import pl.coderslab.user.User;
 import pl.coderslab.user.UserRepo;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
@@ -95,7 +94,8 @@ public class TaskController {
     }
 
     @PostMapping("/task/update/{id}")
-    public String taskEditPost(@ModelAttribute @Valid Task task, BindingResult bindingResult) {
+    public String taskEditPost(@ModelAttribute @Valid Task task, HttpServletRequest request, BindingResult bindingResult) {
+
 
         if (bindingResult.hasErrors()) {
             return "updateTask";
@@ -121,15 +121,21 @@ public class TaskController {
             projectRepository.save(projectList.get(i));
             }
 
-
-
         taskRepository.delete(id);
 
         return "ok";
     }
 
     @ModelAttribute("users")
-    public List<User> getUsers(){ return userRepo.findAll();}
+    public List<User> getUsers(){
+
+        List<User> userList = userRepo.findAll();
+        userList.add(new User());
+
+        return userList;
+    }
+
+
 
     @ModelAttribute("statuses")
     public List<Status> getStatuses(){

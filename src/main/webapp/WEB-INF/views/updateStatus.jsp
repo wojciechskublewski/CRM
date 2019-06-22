@@ -21,7 +21,11 @@
 <body>
 
 <%@include file="navbar.jspf" %>
-<p></p>
+
+<header class="bg-primary">
+    <h1 class="text-center">EDIT Status</h1>
+</header>
+
 
 
 <div class="container">

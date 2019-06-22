@@ -20,6 +20,11 @@
 <body>
 <%@include file="navbar.jspf" %>
 
+<header class="bg-primary">
+    <h1 class="text-center">TASK Details</h1>
+</header>
+
+
         ${userSession.login}
 </body>
 </html>

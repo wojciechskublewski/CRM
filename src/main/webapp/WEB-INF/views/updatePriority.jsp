@@ -21,6 +21,11 @@
 <body>
 <%@include file="navbar.jspf" %>
 
+<header class="bg-primary">
+    <h1 class="text-center">UPDATE Priority</h1>
+</header>
+
+
 
 <div class="form-check">
 

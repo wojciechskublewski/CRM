@@ -21,6 +21,11 @@
 <body>
 <%@include file="navbar.jspf" %>
 
+<header class="bg-primary">
+    <h1 class="text-center">EDIT Tasks</h1>
+</header>
+
+
 <div class="container">
 
     <form:form modelAttribute="task" method="post">
@@ -34,7 +39,7 @@
         </div>
         <div class="row form-group">
             <label class="col-2" for="descriptionID">Description</label>
-            <form:input class="form-control col-3" path="description" id="descriptionID" value="${task.description}"/>
+            <form:textarea class="form-control col-3" path="description" id="descriptionID" value="${task.description}"/>
         </div>
         <div class="row form-group">
             <label class="col-2" for="statusID">Status</label>
@@ -42,8 +47,22 @@
         </div>
         <div class="row form-group">
             <label class="col-2" for="priorityID">Priority</label>
-            <form:select class="custom-select col-3" path="priority.id" items="${priorities}" itemLabel="name" itemValue="id" id="priorityID"/>
+            <form:select class="custom-select col-3" path="priority.id" id="priorityID">
+
+                <form:options items="${priorities}" itemLabel="name" itemValue="id"/>
+            </form:select>
         </div>
+
+        <div class="form-group row">
+            <label for="userID" class="col-sm-2 col-form-label">User</label>
+            <div class="col-sm-3">
+                <form:select name="userCheck" path="user.id" id="userID" class="custom-select"  itemLabel="login" itemValue="id">
+
+                    <form:options items="${users}" itemLabel="login" itemValue="id"/>
+                </form:select>
+            </div>
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form:form>

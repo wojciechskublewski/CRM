@@ -7,7 +7,7 @@ import pl.coderslab.status.Status;
 import pl.coderslab.user.User;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "task")
@@ -17,7 +17,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date date;
+    private java.sql.Date date;
 
     private String subject;
 
@@ -91,5 +91,18 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", date=" + date +
+                ", subject='" + subject + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                ", priority=" + priority +
+                ", user=" + user +
+                '}';
     }
 }

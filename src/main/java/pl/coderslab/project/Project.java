@@ -57,6 +57,12 @@ public class Project {
     public Project() {
     }
 
+    public Project(String name, Date date, Boolean active) {
+        this.date = date;
+        this.name = name;
+        this.active = active;
+    }
+
     public List<Task> getTasks() {
         return tasks;
     }

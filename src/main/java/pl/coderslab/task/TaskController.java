@@ -52,7 +52,7 @@ public class TaskController {
     }
 
     @PostMapping("/task/add")
-    public String addTaskValidation(@ModelAttribute @Valid Task task, BindingResult bindingResult) {
+    public String addTaskValidation(@ModelAttribute @Valid Task task, BindingResult bindingResult, HttpServletRequest request) {
 
         if (bindingResult.hasErrors()) {
             System.out.println("cos nie dziala");
@@ -129,12 +129,8 @@ public class TaskController {
     @ModelAttribute("users")
     public List<User> getUsers(){
 
-        List<User> userList = userRepo.findAll();
-        userList.add(new User());
-
-        return userList;
+        return userRepo.findAll();
     }
-
 
 
     @ModelAttribute("statuses")

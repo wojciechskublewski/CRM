@@ -35,7 +35,7 @@
         </div>
         <div class="form-group row">
             <label class="col-2" for="dateID">Date</label>
-            <form:input class="form-control col-3" path="date" id="dateID" value="${task.date}"/>
+            <form:input class="form-control col-3" type="date" path="date" id="dateID" value="${task.date}"/>
         </div>
         <div class="row form-group">
             <label class="col-2" for="descriptionID">Description</label>

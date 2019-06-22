@@ -35,15 +35,15 @@
     </div>
         <div class="form-group row">
             <label for="dateID" class="col-sm-2 col-form-label">Date</label>
-            <div class="col-sm-3">
-                <form:input path="date" placeholder="mm/dd/yyyy" class="form-control" id="dateID" />
+            <div class="col-sm-7">
+                <form:input path="date" type="date" class="form-control" id="dateID" />
             </div>
         </div>
 
         <div class="form-group row">
             <label for="desID" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-7">
-                <form:textarea path="description" class="form-control" id="desID" />
+                <form:textarea  path="description" class="form-control" id="desID" />
             </div>
         </div>
 

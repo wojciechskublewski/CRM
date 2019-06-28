@@ -65,7 +65,7 @@ public class UserController {
         } else if (loginUnique(user)) {
 
             userDao.save(user);
-            return "ok";
+            return "forward:/allUsers";
         } else {
 
             return "addUser";
@@ -141,7 +141,7 @@ public class UserController {
                 userRepo.delete(id);
             }
 
-        return "ok";
+        return "forward:/allUsers";
     }
 
     @GetMapping("/user/update/{id}")
@@ -162,14 +162,14 @@ public class UserController {
             return "updateUser";
         } else if (loginUnique(user)) {
             userRepo.save(user);
-            return "ok";
+            return "forward:/allUsers";
         } else {
 
             List<User> userList = userRepo.findAllByLogin(user.getLogin());
 
             if (userList.get(0).getId() == id) {
                 userRepo.save(user);
-                return "ok";
+                return "forward:/allUsers";
             } else {
                 return "updateUser";
             }

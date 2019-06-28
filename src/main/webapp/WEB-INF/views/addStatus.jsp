@@ -30,7 +30,8 @@
     <div class="form-group row">
         <label for="nameID" class="col-sm-1 col-form-label">Name</label>
         <div class="col-sm-3">
-        <form:input path="name" id="nameID" class="form-control"/>
+            <form:input path="name" id="nameID" class="form-control"/>
+            <form:errors path="name" element="div" cssClass="error"/>
         </div>
     </div>
 

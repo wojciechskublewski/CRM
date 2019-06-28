@@ -31,12 +31,14 @@
             <label for="nameID" class="col-sm-2 col-form-label">Subject</label>
             <div class="col-sm-7">
                 <form:input path="subject" class="form-control" id="nameID" />
+                <form:errors path="subject" element="div" cssClass="error"/>
         </div>
     </div>
         <div class="form-group row">
             <label for="dateID" class="col-sm-2 col-form-label">Date</label>
             <div class="col-sm-7">
                 <form:input path="date" type="date" class="form-control" id="dateID" />
+                <form:errors path="date" element="div" cssClass="error"/>
             </div>
         </div>
 
@@ -44,6 +46,7 @@
             <label for="desID" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-7">
                 <form:textarea  path="description" class="form-control" id="desID" />
+                <form:errors path="description" element="div" cssClass="error"/>
             </div>
         </div>
 

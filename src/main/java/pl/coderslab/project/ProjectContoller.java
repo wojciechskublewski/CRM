@@ -70,7 +70,7 @@ public class ProjectContoller {
             return "addProject";
         } else {
             projectRepository.save(project);
-            return "ok";
+            return "redirect:/project/all";
         }
     }
 
@@ -106,7 +106,7 @@ public class ProjectContoller {
         System.out.println(strID);
         System.out.println(strIDU);
 
-        return "ok";
+        return "forward:/allProjects";
     }
 
     @GetMapping("/project/update/{id}")
@@ -122,7 +122,7 @@ public class ProjectContoller {
     public String updateProjectVal(@ModelAttribute Project project, BindingResult bindingResult, @PathVariable long id) {
 
        projectRepository.save(project);
-        return  "ok";
+        return  "forward:/allProjects";
     }
 
     @GetMapping("project/delete/user")
@@ -175,7 +175,7 @@ public class ProjectContoller {
 
         //userRepo.deleteUserFromProject(user);
 
-        return  "ok";
+        return  "forward:/allProjects";
     }
 
     @GetMapping("/project/delete/{id}")
@@ -184,7 +184,7 @@ public class ProjectContoller {
         projectRepository.delete(id);
 
 
-        return "ok";
+        return "forward:/allProjects";
     }
 
 

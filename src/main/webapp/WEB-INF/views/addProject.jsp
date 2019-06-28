@@ -31,6 +31,7 @@
             <label for="nameID" class="col-sm-2 col-form-label">Project Name</label>
             <div class="col-sm-7">
                 <form:input path="name" class="form-control" id="nameID" />
+                <form:errors path="name" element="div" cssClass="error"/>
             </div>
         </div>
 
@@ -38,6 +39,7 @@
             <label for="desID" class="col-sm-2 col-form-label">Project Desctrition</label>
                 <div class="col-sm-7">
                     <form:textarea path="description" class="form-control" id="desID" />
+                    <form:errors path="description" element="div" cssClass="error"/>
                 </div>
         </div>
 
@@ -45,6 +47,7 @@
             <label for="webID" class="col-sm-2 col-form-label">Project WebSite</label>
             <div class="col-sm-7">
                 <form:input path="web" class="form-control" id="webID" placeholder="http:\\...." />
+                <form:errors path="web" element="div" cssClass="error"/>
             </div>
         </div>
 

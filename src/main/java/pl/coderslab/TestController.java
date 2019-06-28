@@ -45,4 +45,10 @@ public class TestController {
         return "home";
     }
 
+
+    @GetMapping("/")
+    public String homeStrart(){
+        return "ok";
+    }
+
 }

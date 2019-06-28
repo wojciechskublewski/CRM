@@ -56,7 +56,7 @@ public class StatusController {
             return "forward:/addStatus";
         } else {
             statusRepository.save(status);
-            return "ok";
+            return "forward:/allStatus";
         }
     }
 
@@ -106,7 +106,7 @@ public class StatusController {
             statusRepository.delete(id);
         }
 
-        return "ok";
+        return "forward:/allStatus";
     }
 
 
@@ -115,7 +115,7 @@ public class StatusController {
 
         statusRepository.save(status);
 
-        return "ok";
+        return "forward:/allStatus";
     }
 
 

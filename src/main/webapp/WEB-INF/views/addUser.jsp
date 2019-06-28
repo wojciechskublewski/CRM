@@ -29,24 +29,28 @@
             <label for="loginID" class="col-sm-2 col-form-label">Login</label>
             <div class="col-sm-6">
                 <form:input path="login" type="text" name="login" class="form-control" id="loginID" placeholder="please insert login"/>
+                <form:errors path="login" element="div" cssClass="error"/>
             </div>
         </div>
         <div class="form-group row">
             <label for="firstNameID" class="col-sm-2 col-form-label">First Name</label>
             <div class="col-sm-6">
                 <form:input path="firstName" type="text" name="firstName" class="form-control" id="firstNameID" placeholder="please insert first name"/>
+                <form:errors path="firstName" element="div" cssClass="error"/>
             </div>
         </div>
         <div class="form-group row">
             <label for="lastNameID" class="col-sm-2 col-form-label">Last Name</label>
             <div class="col-sm-6">
                 <form:input path="lastName" type="text" name="lastName" class="form-control" id="lastNameID" placeholder="please insert last name"/>
+                <form:errors path="lastName" element="div" cssClass="error"/>
             </div>
         </div>
         <div class="form-group row">
             <label for="passwordID" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-6">
                 <form:password path="password" name="password" class="form-control" id="passwordID" placeholder="please insert password"/>
+                <form:errors path="password" element="div" cssClass="error"/>
             </div>
         </div>
         <input type="submit" value="Submit" class="btn btn-primary">

@@ -35,6 +35,7 @@
             <label class="col-sm-1 col-form-label" for="nameID">Name</label>
         <div class="col-sm-5">
             <form:input class="form-control" path="name" id="nameID"/>
+            <form:errors path="name" element="div" cssClass="error"/>
         </div>
         </div>
 

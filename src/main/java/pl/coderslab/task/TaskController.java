@@ -59,7 +59,7 @@ public class TaskController {
             return "addTask";
         } else {
             taskRepository.save(task);
-            return "forward:/allTasks";
+            return "redirect:/task/all";
         }
     }
 
@@ -68,7 +68,7 @@ public class TaskController {
 
         List<Task> tasks = taskRepository.findAll();
         model.addAttribute("tasks", tasks);
-        return "forward:/allTasks";
+        return "allTasks";
     }
 
 
@@ -101,7 +101,7 @@ public class TaskController {
             return "updateTask";
         } else {
             taskRepository.save(task);
-            return "forward:/allTasks";
+            return "edirect:/task/all";
         }
     }
 
@@ -123,7 +123,7 @@ public class TaskController {
 
         taskRepository.delete(id);
 
-        return "forward:/allTasks";
+        return "edirect:/task/all";
     }
 
     @ModelAttribute("users")

@@ -49,7 +49,7 @@ public class PriorityController {
             return "forward:/addPriority";
         } else {
             priorityRepository.save(priority);
-            return "forward:/allPriority";
+            return "redirect:/priority/all";
         }
     }
 
@@ -97,7 +97,7 @@ public class PriorityController {
 
         }
 
-        return "forward:/allPriority";
+        return "redirect:/priority/all";
     }
 
     @GetMapping("/priority/update/{id}")
@@ -115,7 +115,7 @@ public class PriorityController {
         priorityRepository.save(priority);
 
 
-        return "forward:/allPriority";
+        return "redirect:/priority/all";
     }
 
 }

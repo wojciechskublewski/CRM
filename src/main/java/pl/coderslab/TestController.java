@@ -1,5 +1,6 @@
 package pl.coderslab;
 
+import com.sun.jmx.snmp.tasks.TaskServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class TestController {
     @Autowired
     ProjectRepository projectRepository;
 
-    @GetMapping("/loadProject")
+    @GetMapping("/loadproject")
     public String test() {
 
 
@@ -41,14 +42,17 @@ public class TestController {
 
         //userRepo.save(user);
 
-
         return "home";
     }
 
 
     @GetMapping("/")
     public String homeStrart(){
-        return "ok";
+
+
+
+
+        return "home";
     }
 
 }

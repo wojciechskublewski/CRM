@@ -9,4 +9,6 @@ public interface PriorityRepository extends JpaRepository<Priority, Long> {
 
     List<Priority> findByActivityTrue();
 
+
+
 }

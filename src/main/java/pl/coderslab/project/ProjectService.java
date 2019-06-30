@@ -1,5 +1,7 @@
 package pl.coderslab.project;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,11 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class ProjectService {
+
+
+    @Autowired
+    ProjectRepository projectRepository;
+
 
     public List<Project> createProjectList(){
 
@@ -40,6 +47,10 @@ public class ProjectService {
         return projectList;
 
     }
+
+
+
+
 
 
 }

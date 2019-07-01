@@ -21,10 +21,38 @@
 <%@include file="navbar.jspf" %>
 
 <header class="bg-primary">
-    <h1 class="text-center">TASK Details</h1>
+    <h1 class="text-center">User projects & tasks</h1>
 </header>
+<div class="row">
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        Projects
+    </div>
+    <c:forEach items="${projects}" var="u">
+    <ul class="list-group list-group-flush">
+
+        <li class="list-group-item">${u.name}</li>
+
+    </ul>
+    </c:forEach>
+</div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Projects
+        </div>
+        <c:forEach items="${tasks}" var="u">
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">${u.subject}</li>
+
+            </ul>
+        </c:forEach>
+    </div>
+</div>
 
 
-        ${userSession.login}
+
+
 </body>
 </html>

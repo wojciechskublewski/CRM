@@ -16,4 +16,6 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findAllByActiveTrueOrderByDate();
     List<Project> findAllByActiveFalseOrderByDate();
 
+    @Query("SELECT p FROM Project p JOIN p.users c WHERE c.id = ?1")
+    List<Project> findAllByUserId(Long id);
 }

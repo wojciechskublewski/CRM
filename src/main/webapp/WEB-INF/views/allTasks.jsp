@@ -59,7 +59,7 @@
                     <td>${t.user.login}</td>
                     <td>${t.priority.name}</td>
                     <td>${t.status.name}</td>
-                    <td><a href="/task/update/${t.id}" class="btn btn-primary">Edit</a> / <a href="#" class="btn btn-danger" onclick="confirmDeleteTask(${t.id}, '${t.subject}')" >Delete</a> </td>
+                    <td><a href="/task/update/${t.id}" class="btn btn-primary">Edit</a>  <a href="#" class="btn btn-danger" onclick="confirmDeleteTask(${t.id}, '${t.subject}')" >Delete</a> </td>
 
                 </tr>
             </tbody>

@@ -47,7 +47,7 @@
                     <td>${userList.login}</td>
                     <td>${userList.firstName}</td>
                     <td>${userList.lastName}</td>
-                    <td><a class="btn btn-primary" name="${userList.id}" href="/user/update/${userList.id}">Update</a> / <a name="${userList.id}" href="#" onclick="confirmDeleteUser(${userList.id}, '${userList.login}')" class="btn btn-danger" >Delete</a> </td>
+                    <td><a class="btn btn-primary" name="${userList.id}" href="/user/update/${userList.id}">Update</a>  <a name="${userList.id}" href="#" onclick="confirmDeleteUser(${userList.id}, '${userList.login}')" class="btn btn-danger" >Delete</a> </td>
                 </tr>
             </c:forEach>
         </table>

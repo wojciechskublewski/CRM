@@ -28,6 +28,10 @@
 <body>
 <%@include file="navbar.jspf" %>
 
+<header class="bg-success">
+    <h1 class="text-center">All Statuses</h1>
+</header>
+
 <div class="container">
         <table class="table table-striped">
             <thead>
@@ -46,7 +50,7 @@
                 <td>${status.name}</td>
                 <td>${status.activity}</td>
                 <td>${status.sorting}</td>
-                <td><a class="btn btn-primary" name="${p.id}" href="/status/update/${status.id}">Update</a> / <a name="${status.id}" href="#" onclick="confirmDeleteStatus(${status.id}, '${status.name}')" class="btn btn-danger" >Delete</a> </td>
+                <td><a class="btn btn-primary" name="${p.id}" href="/status/update/${status.id}">Update</a>  <a name="${status.id}" href="#" onclick="confirmDeleteStatus(${status.id}, '${status.name}')" class="btn btn-danger" >Delete</a> </td>
             </tr>
 
         </c:forEach>

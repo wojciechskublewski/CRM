@@ -33,8 +33,9 @@
     <h1 class="text-center">All Projects</h1>
 </header>
 
+<div class="container">
     <table class="table table-striped">
-        <thead class="thead-light">
+        <thead>
         <tr>
             <th scope="col">Project name</th>
             <th scope="col">Project description</th>
@@ -71,6 +72,6 @@
 
     </c:forEach>
     </table>
-
+</div>
 </body>
 </html>

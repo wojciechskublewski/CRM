@@ -27,6 +27,9 @@
 </head>
 <body>
 <%@include file="navbar.jspf" %>
+<header class="bg-success">
+    <h1 class="text-center">All Priorities</h1>
+</header>
 
 <div class="container">
 <table class="table table-striped">
@@ -43,7 +46,7 @@
                 <tr scope="row">
                     <td>${p.name}</td>
                     <td>${p.activity}</td>
-                    <td><a class="btn btn-primary" name="${p.id}" href="/priority/update/${p.id}">Update</a> / <a name="${p.id}" href="#" onclick="confirmDeletePriority(${p.id}, '${p.name}')" class="btn btn-danger" >Delete</a> </td>
+                    <td><a class="btn btn-primary" name="${p.id}" href="/priority/update/${p.id}">Update</a>  <a name="${p.id}" href="#" onclick="confirmDeletePriority(${p.id}, '${p.name}')" class="btn btn-danger" >Delete</a> </td>
                 </tr>
             </c:forEach>
 

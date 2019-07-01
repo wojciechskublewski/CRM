@@ -9,10 +9,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.project.Project;
 import pl.coderslab.project.ProjectRepository;
+import pl.coderslab.task.Task;
+import pl.coderslab.task.TaskRepository;
 import pl.coderslab.user.UserDao;
 import pl.coderslab.user.UserRepo;
 import pl.coderslab.user.User;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
@@ -31,6 +34,9 @@ public class UserController {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    TaskRepository taskRepository;
 
     private UserService userService;
 
@@ -101,11 +107,16 @@ public class UserController {
 
     @PostMapping("/start")
     public String loginValidation(@RequestParam String login, @RequestParam String password, Model model) {
+
+
+
         User user = userRepo.findFirstByLogin(login);
+
+
 
         model.addAttribute("isLogged", false);
         if (user == null) {
-            return "login";
+            return "start";
         }
 
         //System.out.println(user.getPassword());
@@ -114,6 +125,13 @@ public class UserController {
         if (password.equals(user.getPassword())) {
             model.addAttribute("userSession", user);
             model.addAttribute("isLogged", true);
+
+            List<Project> projectList = projectRepository.findAllByUserId(user.getId());
+            List<Task> taskList = taskRepository.findByUser(user);
+
+            model.addAttribute("projects",projectList);
+            model.addAttribute("tasks",taskList);
+
             return "userList";
         }
         return "login";

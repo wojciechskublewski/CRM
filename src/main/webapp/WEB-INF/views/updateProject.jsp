@@ -49,6 +49,14 @@
             </div>
         </div>
 
+
+        <div class="form-group row">
+            <label for="dateID" class="col-sm-2 col-form-label">Project Date</label>
+            <div class="col-sm-7">
+                <form:input path="date" value="${project.date}" type="date" class="form-control" id="dateID" />
+            </div>
+        </div>
+
         <div class="form-group row">
             <label for="usersID" class="col-sm-2 col-form-label">USERS</label>
             <div class="col-sm-7">

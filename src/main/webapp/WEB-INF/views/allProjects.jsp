@@ -64,7 +64,7 @@
 
             </td>
             <td>${projects.active}</td>
-            <td><a href="/project/update/${projects.id}" class="btn btn-primary">Edit</a> / <a href="#" class="btn btn-danger" onclick="confirmDeleteProject(${projects.id}, '${projects.name}')" >Delete</a> </td>
+            <td><a href="/project/update/${projects.id}" class="btn btn-primary">Edit</a>  <a href="#" class="btn btn-danger" onclick="confirmDeleteProject(${projects.id}, '${projects.name}')" >Delete</a> </td>
 
         </tr>
         </tbody>

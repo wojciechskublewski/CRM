@@ -2,6 +2,7 @@ package pl.coderslab.project;
 
 
 import org.hibernate.Hibernate;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 import javax.validation.Validator;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -42,12 +44,27 @@ public class ProjectContoller {
     @Autowired
     TaskRepository taskRepository;
 
+
+    @GetMapping("/project/{id}")
+    public String showProject(@PathVariable Long id, Model model){
+
+        Project project = projectRepository.findOne(id);
+
+        model.addAttribute("project", project);
+
+        return "detailProject";
+    }
+
+
+
     @GetMapping("/project/all")
     public String showAllProjects(Model model) {
 
         List<Project> projects = projectRepository.findAll();
 
         model.addAttribute("projects", projects);
+
+
 
         return "allProjects";
     }
@@ -187,6 +204,32 @@ public class ProjectContoller {
         return "redirect:/project/all";
     }
 
+    @GetMapping("/")
+    public String homeStrart(Model model){
+
+        List<Project> projectList = projectRepository.findAllByActiveTrueOrderByDate();
+        List<Project> projectList1 = projectRepository.findAllByActiveFalseOrderByDate();
+
+        model.addAttribute("project", projectList);
+        model.addAttribute("project1", projectList1);
+
+        return "start";
+    }
+
+    @GetMapping("/loadproject")
+    public String test() {
+
+
+        ProjectService projectService = new ProjectService();
+
+        List<Project> projectList = projectService.createProjectList();
+
+        projectRepository.save(projectList);
+
+        //userRepo.save(user);
+
+        return "redirect:/";
+    }
 
     @ModelAttribute("users")
     public List<User> getUsers() {

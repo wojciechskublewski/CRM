@@ -24,7 +24,7 @@
     <h1 class="text-center">User projects & tasks</h1>
 </header>
 <div class="row">
-<div class="card" style="width: 18rem;">
+<div class="card mx-auto" style="width: 18rem;">
     <div class="card-header">
         Projects
     </div>
@@ -37,9 +37,9 @@
     </c:forEach>
 </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card mx-auto" style="width: 18rem;">
         <div class="card-header">
-            Projects
+            Task
         </div>
         <c:forEach items="${tasks}" var="u">
             <ul class="list-group list-group-flush">

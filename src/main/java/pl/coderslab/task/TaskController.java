@@ -101,7 +101,7 @@ public class TaskController {
             return "updateTask";
         } else {
             taskRepository.save(task);
-            return "edirect:/task/all";
+            return "redirect:/task/all";
         }
     }
 
@@ -123,7 +123,7 @@ public class TaskController {
 
         taskRepository.delete(id);
 
-        return "edirect:/task/all";
+        return "redirect:/task/all";
     }
 
     @ModelAttribute("users")

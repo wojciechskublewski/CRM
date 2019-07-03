@@ -134,12 +134,21 @@ public class ProjectContoller {
 
         return "updateProject";
     }
-
+    @Transactional
     @PostMapping("project/update/{id}")
-    public String updateProjectVal(@ModelAttribute Project project, BindingResult bindingResult, @PathVariable long id) {
+    public String updateProjectVal(@ModelAttribute Project project, Model model, BindingResult bindingResult, @PathVariable long id) {
 
-       projectRepository.save(project);
-        return  "redirect:/project/all";
+
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.toString());
+            model.addAttribute("project", project);
+            return "updateProject";
+        } else {
+            projectRepository.save(project);
+            return "redirect:/project/all";
+        }
+
+
     }
 
     @GetMapping("project/delete/user")

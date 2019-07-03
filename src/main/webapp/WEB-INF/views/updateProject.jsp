@@ -46,6 +46,7 @@
             <label for="webID" class="col-sm-2 col-form-label">Project WebSite</label>
             <div class="col-sm-7">
                 <form:input path="web" value="${project.web}" class="form-control" id="webID" placeholder="http:\\...." />
+                <form:errors path="web" element="div" cssClass="error"/>
             </div>
         </div>
 

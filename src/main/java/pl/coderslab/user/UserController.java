@@ -116,7 +116,7 @@ public class UserController {
 
         model.addAttribute("isLogged", false);
         if (user == null) {
-            return "start";
+            return "login";
         }
 
         //System.out.println(user.getPassword());
